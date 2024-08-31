@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creación de Cuestionario</title>
+    <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Crea tu formulario</h1>
+        <form action="cuestionario.php" method="post">
+            <div class="question-container">
+                <label for="question">Pregunta:</label>
+                <input type="text" name="question[]" required>
+                
+                <label for="option1">Opción 1:</label>
+                <input type="text" name="option1[]" required>
+                
+                <label for="option2">Opción 2:</label>
+                <input type="text" name="option2[]" required>
+
+                <label for="option3">Opción 3:</label>
+                <input type="text" name="option3[]">
+
+                <label for="option4">Opción 4:</label>
+                <input type="text" name="option4[]">
+            </div>
+
+            <button type="button" onclick="addQuestion()">Añadir otra pregunta</button>
+            <button type="submit">Guardar Cuestionario</button>
+        </form>
+    </div>
+
+    <script>
+        function addQuestion() {
+            const container = document.querySelector('.question-container');
+            const newQuestion = container.cloneNode(true);
+            document.querySelector('form').insertBefore(newQuestion, document.querySelector('button[type="submit"]'));
+        }
+    </script>
+</body>
+</html>
